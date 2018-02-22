@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Tasks;
-use Illuminate\Http\Request;
+use App\Task;
 
 class TasksController extends Controller
 {
@@ -14,28 +13,9 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $tasks = Task::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -44,42 +24,8 @@ class TasksController extends Controller
      * @param  \App\Tasks  $tasks
      * @return \Illuminate\Http\Response
      */
-    public function show(Tasks $tasks)
+    public function show(Task $task)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Tasks  $tasks
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tasks $tasks)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tasks  $tasks
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tasks $tasks)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Tasks  $tasks
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tasks $tasks)
-    {
-        //
+        return view('tasks.show')->with('task', $task);
     }
 }
