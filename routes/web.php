@@ -18,11 +18,11 @@ Route::get('/', function () {
 Route::get('/tasks', function () {
     $tasks = DB::table('tasks')->get();
 
-    return $tasks;
+    return view('tasks.index', compact('tasks'));
 });
 
 Route::get('/tasks/{task}', function ($id) {
-    $task = DB::table('tasks')->find('id', $id)->get();
+    $task = DB::table('tasks')->where('id', $id)->get();
 
     return $task;
 });
