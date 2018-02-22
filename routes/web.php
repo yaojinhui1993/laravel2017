@@ -1,6 +1,9 @@
 <?php
 
+Route::get('/', 'PostsController@index');
 
-Route::get('/tasks', 'TasksController@index');
+Route::get('/posts/{post}', 'PostsController@show');
 
-Route::get('/tasks/{task}', 'TasksController@show');
+// controller -> PostsController
+// Eloquent -> Post.php
+// migration -> create_posts_table
