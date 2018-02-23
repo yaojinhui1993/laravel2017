@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Mail\Welcome;
 
 class RegistrationController extends Controller
 {
-    public function __constructor()
+    public function __construct()
     {
         $this->middleware('guest');
     }
@@ -34,6 +35,8 @@ class RegistrationController extends Controller
         // Sign in the user
         auth()->login($user);
 
+        // send email
+        \Mail::to($user)->send(new Welcome($user));
         // redirect to home page
 
         return redirect()->home();
